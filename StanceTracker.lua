@@ -1,12 +1,23 @@
 local StanceTracker = {}
-
 local enemyStances = {}
+
 function StanceTracker:OnInitialize()
 	StanceTrackDB = StanceTrackDB or {locked = true, size = 24, scale = 1.0}
 	
 	self.db = { profile = StanceTrackDB }
-	self.spells = StanceTrackerSpells
-	self.stances = StanceTrackerStances
+	self.spells = {
+		-- Defensive Stance
+		[71] = "defensive",
+		-- Battle Stance
+		[2457] = "battle",
+		-- Berserker Stance
+		[2458] = "berserker",
+	}
+	self.stances = {
+		["defensive"] = "Interface\\Icons\\Ability_Warrior_DefensiveStance",
+		["battle"] = "Interface\\Icons\\Ability_Warrior_OffensiveStance",
+		["berserker"] = "Interface\\Icons\\Ability_Racial_Avatar",
+	}
 end
 
 -- Display for the targets stance
